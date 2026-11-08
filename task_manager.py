@@ -73,6 +73,7 @@ def complete_task():
     tasks_to_json(tasks, "tasks.json")
     print(f"{tasks[position]['title']} completed!")
 
+# A function to delete a task
 def delete_task():
     view_tasks()
     position = task_number()
@@ -81,6 +82,26 @@ def delete_task():
     removed = tasks.pop(position)
     tasks_to_json(tasks, "tasks.json")
     print(f"{removed['title']} deleted!")
+
+# A function to edit a task
+def edit_task():
+    view_tasks()
+    position = task_number()
+    if position is None:
+        return
+    task = tasks[position]
+    print("If you don't wanna edit, just click enter")
+    title = input("Tilte: ")
+    if title != "":
+        task['title'] = title
+    description = input("Description: ")
+    if description != "":
+            task['description'] = description
+    deadline= input("Deadline: ")
+    if deadline != "":
+            task['deadline'] = deadline
+    tasks_to_json(tasks, "tasks.json")
+    print(f"Task {position + 1} updated!")
 
 # Taking user input on what to do
 while True:
@@ -95,6 +116,9 @@ while True:
 
     elif choose == "3":
         complete_task()
+
+    elif choose == "4":
+        edit_task()
 
     elif choose == "5":
         delete_task()
