@@ -1,14 +1,26 @@
 [
  {
-  "title": "1",
-  "description": "2",
-  "deadline": "3",
+  "title": "exam",
+  "description": "physics",
+  "deadline": "monday",
+  "status": "completed"
+ },
+ {
+  "title": "trip",
+  "description": "jaipur",
+  "deadline": "friday",
+  "status": "completed"
+ },
+ {
+  "title": "go",
+  "description": "1",
+  "deadline": "2",
   "status": "pending"
  },
  {
-  "title": "4",
-  "description": "5",
-  "deadline": "6",
+  "title": "1",
+  "description": "2",
+  "deadline": "3",
   "status": "pending"
  }
 ]
