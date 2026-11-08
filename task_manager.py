@@ -41,25 +41,23 @@ def add_tasks():
     tasks.append(task)
 
 def view_tasks():
+    if len(tasks) == 0:
+            print("No tasks yet!")
 # enumerate --> providing both the index and the element together
     for number, task in enumerate(tasks, start = 1):
         print(f"{number} . {task['title']} | {task['description']} | {task['deadline']} | {task['status']}")
+        
 
 while True:
-    choose = input("Add Task OR Exit OR View: ").lower()
-    if choose == "add task":
+    choose = input("1.Add Task OR 2.View OR 3.Complete OR 4.Edit OR 5.Delete OR 6.Filter OR 7.Exit: ").lower()
+    if choose == "1":
         add_tasks()
         tasks_to_json(tasks, "tasks.json")
-        tasks = load_tasks("tasks.json")
-        load_tasks("tasks.json")
 
-    elif choose == "exit":
+    elif choose == "7":
         break
 
-    elif choose == "view":
-        try:
-            view_tasks()
-        except NameError:
-            print("No tasks yet!")
+    elif choose == "2":
+        view_tasks()
     else:
-        continue
+        print("Invalid choice, try again!")
