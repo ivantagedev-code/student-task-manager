@@ -62,7 +62,8 @@ def task_number():
             print("No task with that number")
             return None
     return number - 1
-    
+
+# A function to complete a task
 def complete_task():
     view_tasks()
     position = task_number()
@@ -72,6 +73,16 @@ def complete_task():
     tasks_to_json(tasks, "tasks.json")
     print(f"{tasks[position]['title']} completed!")
 
+def delete_task():
+    view_tasks()
+    position = task_number()
+    if position is None:
+        return
+    removed = tasks.pop(position)
+    tasks_to_json(tasks, "tasks.json")
+    print(f"{removed['title']} deleted!")
+
+# Taking user input on what to do
 while True:
     choose = input("1.Add Task OR 2.View OR 3.Complete OR 4.Edit OR 5.Delete OR 6.Filter OR 7.Exit: ").lower()
     if choose == "1":
@@ -84,6 +95,9 @@ while True:
 
     elif choose == "3":
         complete_task()
+
+    elif choose == "5":
+        delete_task()
 
     elif choose == "7":
         break

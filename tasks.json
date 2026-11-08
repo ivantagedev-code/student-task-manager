@@ -6,21 +6,21 @@
   "status": "completed"
  },
  {
-  "title": "trip",
-  "description": "jaipur",
-  "deadline": "friday",
-  "status": "completed"
- },
- {
-  "title": "go",
-  "description": "1",
-  "deadline": "2",
+  "title": "g",
+  "description": "2",
+  "deadline": "nh",
   "status": "pending"
  },
  {
-  "title": "1",
+  "title": "s",
+  "description": "3",
+  "deadline": "v",
+  "status": "completed"
+ },
+ {
+  "title": "s",
   "description": "2",
-  "deadline": "3",
+  "deadline": "g",
   "status": "pending"
  }
 ]
