@@ -22,6 +22,7 @@ def tasks_to_json(tasks, filename):
         # e is used to print the exact error message
         print(f"Error writting to file: {e}")
 
+# to load files already present in tasks.json so that they are not lost after each program run
 def load_tasks(filename):
     try:
         with open(filename, "r") as f:
@@ -29,9 +30,10 @@ def load_tasks(filename):
     except FileNotFoundError:
         return []
 
+# saving all the tasks in json in tasks list
 tasks = load_tasks("tasks.json")
 
-
+# to add task to the list tasks
 def add_tasks():
     task = {}
     task['title']= input("Title: ")
