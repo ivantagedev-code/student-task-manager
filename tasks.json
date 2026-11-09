@@ -21,12 +21,6 @@
   "title": "Electronics viva",
   "description": "Viva exam",
   "deadline": "Tuesday",
-  "status": "pending"
- },
- {
-  "title": "Assignment",
-  "description": "Maths work",
-  "deadline": "Wednesday",
-  "status": "pending"
+  "status": "completed"
  }
 ]
