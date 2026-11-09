@@ -16,5 +16,11 @@
   "description": "Integrate Pytest into the web app",
   "deadline": "Nov 15",
   "status": "pending"
+ },
+ {
+  "title": "Electronics viva",
+  "description": "Viva exam",
+  "deadline": "Tuesday",
+  "status": "pending"
  }
 ]

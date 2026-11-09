@@ -17,7 +17,7 @@ def tasks_to_json(tasks, filename):
             json.dump(tasks, file, indent = 1)
     except OSError as e:
         # e is used to print the exact error message
-        print(f"Error writting to file: {e}")
+        print(f"Error writing to file: {e}")
 
 # A function to load everything in json file to our tasks list
 def load_tasks(filename):
@@ -44,7 +44,7 @@ def add_tasks():
     task['deadline'] = correct_input("Deadline: ")   
     task['status'] = "pending"
     tasks.append(task)
-    print("Task added succesfully!")
+    print("Task added successfully!")
 
 # Display result as a table
 def print_table(task_list):
@@ -121,7 +121,7 @@ def edit_task():
         return
     task = tasks[position]
     print("If you don't wanna edit, just click enter")
-    title = input("Tilte: ").strip()
+    title = input("Title: ").strip()
     if title != "":
         task['title'] = title
     description = input("Description: ").strip()
@@ -133,7 +133,7 @@ def edit_task():
     tasks_to_json(tasks, "tasks.json")
     print(f"Task {position + 1} updated!")
 
-# To dispaly based on condition
+# To display based on condition
 def filter_task():
     if len(tasks) == 0:
         print("No tasks yet!")
