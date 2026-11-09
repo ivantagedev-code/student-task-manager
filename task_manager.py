@@ -34,9 +34,9 @@ tasks = load_tasks("tasks.json")
 # to add task to the list tasks
 def add_tasks():
     task = {}
-    task['title']= input("Title: ")
-    task['description'] = input("Description: ")
-    task['deadline'] = input("Deadline: ")
+    task['title']= input("Title: ").strip()
+    task['description'] = input("Description: ").strip()
+    task['deadline'] = input("Deadline: ").strip()
     task['status'] = "pending"
     tasks.append(task)
 
@@ -91,17 +91,35 @@ def edit_task():
         return
     task = tasks[position]
     print("If you don't wanna edit, just click enter")
-    title = input("Tilte: ")
+    title = input("Tilte: ").strip()
     if title != "":
         task['title'] = title
-    description = input("Description: ")
+    description = input("Description: ").strip()
     if description != "":
             task['description'] = description
-    deadline= input("Deadline: ")
+    deadline= input("Deadline: ").strip()
     if deadline != "":
             task['deadline'] = deadline
     tasks_to_json(tasks, "tasks.json")
     print(f"Task {position + 1} updated!")
+
+def filter_task():
+    if len(tasks) == 0:
+        print("No tasks yet!")
+        return
+    status = input("Pending OR Completed: ").strip().lower()
+    if status != "pending" and status != "completed":
+        print("Please type pending or completed")
+        return
+    matches = []
+    for task in tasks:
+        if task['status'] == status:
+            matches.append(task)
+    if not matches:
+        print("No task found")
+        return
+    for number, match in enumerate(matches, start=1):
+        print(f"{number} . {task['title']} | {task['description']} | {task['deadline']} | {task['status']}")
 
 # Taking user input on what to do
 while True:
@@ -122,6 +140,9 @@ while True:
 
     elif choose == "5":
         delete_task()
+
+    elif choose == "6":
+        filter_task()
 
     elif choose == "7":
         break
