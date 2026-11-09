@@ -45,6 +45,7 @@ def add_tasks():
     task['deadline'] = correct_input("Deadline: ")   
     task['status'] = "pending"
     tasks.append(task)
+    tasks_to_json(tasks, "tasks.json")
     print("Task added successfully!")
 
 # Display result as a table
@@ -168,7 +169,6 @@ while True:
     choose = input("Choose (1-7): ")
     if choose == "1":
         add_tasks()
-        tasks_to_json(tasks, "tasks.json")
 
     elif choose == "2":
         view_tasks()
