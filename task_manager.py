@@ -23,6 +23,7 @@ def tasks_to_json(tasks, filename):
 def load_tasks(filename):
     try:
         with open(filename, "r") as f:
+        # load() --> Read from a file on your computer.
             return(json.load(f))
     except FileNotFoundError:
         return []
