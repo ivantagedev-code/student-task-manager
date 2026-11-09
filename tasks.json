@@ -1,26 +1,20 @@
 [
  {
-  "title": "exam",
-  "description": "physics",
-  "deadline": "monday",
+  "title": "Physics viva",
+  "description": "Review lab manual",
+  "deadline": "Nov 12",
   "status": "completed"
  },
  {
-  "title": "g",
-  "description": "2",
-  "deadline": "q",
-  "status": "pending"
- },
- {
-  "title": "trip",
-  "description": "w",
-  "deadline": "q",
+  "title": "Call Mom",
+  "description": "After dinner",
+  "deadline": "8:00 PM",
   "status": "completed"
  },
  {
-  "title": "s",
-  "description": "2",
-  "deadline": "g",
+  "title": "Streamlit App",
+  "description": "Integrate Pytest into the web app",
+  "deadline": "Nov 15",
   "status": "pending"
  }
 ]
