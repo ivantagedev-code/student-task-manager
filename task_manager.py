@@ -27,6 +27,9 @@ def load_tasks(filename):
             return(json.load(f))
     except FileNotFoundError:
         return []
+    except json.JSONDecodeError:
+        print("Saved tasks file is damaged. Starting with an empty list")
+        return []
 tasks = load_tasks("tasks.json")
 
 # To get right input
