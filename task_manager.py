@@ -17,7 +17,7 @@ def tasks_to_json(tasks, filename):
             json.dump(tasks, file, indent = 1)
     except OSError as e:
         # e is used to print the exact error message
-        print(f"Error writing to file: {e}")
+        print(f"✘ Could not save tasks: {e}")
 
 # A function to load everything in json file to our tasks list
 def load_tasks(filename):
@@ -28,7 +28,7 @@ def load_tasks(filename):
     except FileNotFoundError:
         return []
     except json.JSONDecodeError:
-        print("Saved tasks file is damaged. Starting with an empty list")
+        print("ℹ Saved file is damaged. Starting with an empty list.")
         return []
 tasks = load_tasks("tasks.json")
 
@@ -38,7 +38,7 @@ def correct_input(prompt):
         reply = input(prompt).strip()
         if reply != "":
             return reply
-        print("This can't be empty")
+        print("	✘ This field can't be empty")
 
 # to add task to the list tasks
 def add_tasks():
@@ -49,7 +49,7 @@ def add_tasks():
     task['status'] = "pending"
     tasks.append(task)
     tasks_to_json(tasks, "tasks.json")
-    print("Task added successfully!")
+    print("✔ Task added successfully!")
 
 # Display result as a table
 def print_table(task_list):
@@ -75,7 +75,7 @@ def print_table(task_list):
 # A function to view the tasks
 def view_tasks():
     if len(tasks) == 0:
-            print("No tasks yet!")
+            print("ℹ No tasks yet. Choose 1 to add one.")
             return
     print_table(tasks)
 
@@ -90,11 +90,11 @@ def task_number():
         try:
             number = int(text)
         except ValueError:
-            print("Please type a number")
+            print("✘ Please type a number")
             continue
         else:
             if number < 1 or number > len(tasks):
-                print("No task with that number")
+                print("✘ No task with that number")
                 continue
         return number - 1
 
@@ -125,7 +125,7 @@ def edit_task():
     if position is None:
         return
     task = tasks[position]
-    print("If you don't wanna edit, just click enter")
+    print("ℹ Press Enter to keep a field unchanged")
     title = input("Title: ").strip()
     if title != "":
         task['title'] = title
@@ -136,17 +136,17 @@ def edit_task():
     if deadline != "":
             task['deadline'] = deadline
     tasks_to_json(tasks, "tasks.json")
-    print(f"Task {position + 1} updated!")
+    print(f"✔ Task {position + 1} updated")
 
 # To display based on condition
 def filter_task():
     if len(tasks) == 0:
-        print("No tasks yet!")
+        print("ℹ No tasks yet. Choose 1 to add one.")
         return
     while True:
         status = input("Pending OR Completed: ").strip().lower()
         if status != "pending" and status != "completed":
-            print("Please type pending or completed")
+            print("✘ Please type pending or completed")
             continue
         else:
             break
@@ -155,7 +155,7 @@ def filter_task():
         if task['status'] == status:
             matches.append(task)
     if not matches:
-        print("No task found")
+        print("ℹ No matching tasks found")
         return
     print_table(matches)
 
@@ -192,4 +192,4 @@ while True:
         break
 
     else:
-        print("Invalid choice, try again!")
+        print("✘ Invalid choice. Please choose 1 to 7")

@@ -2,25 +2,31 @@
  {
   "title": "Physics viva",
   "description": "Review lab manual",
-  "deadline": "Nov 12",
+  "deadline": "Nov 20",
   "status": "completed"
- },
- {
-  "title": "Call Mom",
-  "description": "After dinner",
-  "deadline": "8:00 PM",
-  "status": "completed"
- },
- {
-  "title": "Streamlit App",
-  "description": "Integrate Pytest into the web app",
-  "deadline": "Nov 15",
-  "status": "pending"
  },
  {
   "title": "Electronics viva",
   "description": "Viva exam",
   "deadline": "Tuesday",
   "status": "completed"
+ },
+ {
+  "title": "Call mom",
+  "description": "After dinner",
+  "deadline": "8:00 PM",
+  "status": "completed"
+ },
+ {
+  "title": "Dance class",
+  "description": "Visit dance school",
+  "deadline": "Nov 11",
+  "status": "pending"
+ },
+ {
+  "title": "Vegetables",
+  "description": "Buy vegetables",
+  "deadline": "Thursday",
+  "status": "pending"
  }
 ]
