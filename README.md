@@ -33,7 +33,7 @@
    ```
 2. Install the requirement:
    ```
-   pip install -r requirements.txt
+   python -m pip install -r requirements.txt
    ```
 
 ## How to run
