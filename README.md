@@ -1,6 +1,16 @@
-# Student Task Manager
+<p align="center">
+  <img src="screenshots/banner.png" alt="Student Task Manager banner" width="100%">
+</p>
 
-A command-line task manager written in Python. Add tasks with a title, description and deadline, mark them as completed, edit or delete them, and filter by status. Tasks are saved to a file, so they are still there after you close and reopen the program.
+# 📝 Student Task Manager
+
+![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Type](https://img.shields.io/badge/App-CLI-lightgrey)
+
+> A command-line task manager in Python. Add, edit, delete and filter tasks, and they're saved for next time.
+
+---
 
 ## Features
 
