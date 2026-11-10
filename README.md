@@ -63,37 +63,48 @@ You will see this menu:
 
 When asked for a task number, press Enter to cancel and go back to the menu.
 
-## Screenshots
+## 📸 Screenshots
 
 **Menu**
 
 ![Menu](screenshots/01-menu.png)
 
+**View tasks**
+
+![View tasks](screenshots/03-view.png)
+
+**Filter tasks**
+
+![Filter](screenshots/07-filter.png)
+
+<details>
+<summary>Click to see more screenshots</summary>
+
 **Adding a task**
 
 ![Add task](screenshots/02-add.png)
 
-**Viewing tasks**
-
-![View tasks](screenshots/03-view.png)
-
-**Marking a task complete, editing and deleting**
+**Marking a task complete**
 
 ![Complete](screenshots/04-complete.png)
+
+**Editing a task**
+
 ![Edit](screenshots/05-edit.png)
+
+**Deleting a task**
+
 ![Delete](screenshots/06-delete.png)
-
-**Filtering**
-
-![Filter](screenshots/07-filter.png)
 
 **Tasks are still there after restarting**
 
 ![Restart](screenshots/08-restart.png)
 
-**Invalid input**
+**Invalid input is handled**
 
 ![Invalid input](screenshots/09-error.png)
+
+</details>
 
 ## How the data is saved
 
