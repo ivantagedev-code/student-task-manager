@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="screenshots/banner.png" alt="Student Task Manager banner" width="100%">
-</p>
-
 # 📝 Student Task Manager
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
