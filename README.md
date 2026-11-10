@@ -122,6 +122,4 @@ Tasks are stored as a list of dictionaries in `tasks.json`, in the same folder a
 - After deleting a task, the list shifts. A message that read from the list afterwards named the wrong task, so I kept the removed task in a variable.
 - Checking input in a loop that asks again, instead of crashing or silently going back to the menu, makes the program much easier to use.
 
-## Author
 
-Isha
