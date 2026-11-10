@@ -120,12 +120,5 @@ Tasks are stored as a list of dictionaries in `tasks.json`, in the same folder a
 
 - When you filter, the numbers start from 1 again. They are only for display and do not match the numbers in the full list.
 
-## What I learned
-
-- A function that does not `return` a value gives back `None`. This caused tasks to be saved as `None` until I fixed my input helper.
-- The list in memory must be loaded from the file at the start. When I started with an empty list each time, the old tasks were overwritten on save.
-- Python lists start at 0 but users count from 1, so every task number is converted before use.
-- After deleting a task, the list shifts. A message that read from the list afterwards named the wrong task, so I kept the removed task in a variable.
-- Checking input in a loop that asks again, instead of crashing or silently going back to the menu, makes the program much easier to use.
 
 
