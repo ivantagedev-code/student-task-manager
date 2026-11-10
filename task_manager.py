@@ -1,6 +1,7 @@
 import json
 from tabulate import tabulate
 
+filename = "tasks.json"
 # A function to write tasks to a json file
 def tasks_to_json(tasks, filename):
     # validate that tasks is a list
@@ -30,7 +31,7 @@ def load_tasks(filename):
     except json.JSONDecodeError:
         print("ℹ Saved file is damaged. Starting with an empty list.")
         return []
-tasks = load_tasks("tasks.json")
+tasks = load_tasks(filename)
 
 # To get right input
 def correct_input(prompt):
@@ -38,7 +39,7 @@ def correct_input(prompt):
         reply = input(prompt).strip()
         if reply != "":
             return reply
-        print("	✘ This field can't be empty")
+        print("✘ This field can't be empty")
 
 # to add task to the list tasks
 def add_tasks():
@@ -48,7 +49,7 @@ def add_tasks():
     task['deadline'] = correct_input("Deadline: ")   
     task['status'] = "pending"
     tasks.append(task)
-    tasks_to_json(tasks, "tasks.json")
+    tasks_to_json(tasks, filename)
     print("✔ Task added successfully!")
 
 # Display result as a table
@@ -105,7 +106,7 @@ def complete_task():
     if position is None:
         return
     tasks[position]["status"] = "completed"
-    tasks_to_json(tasks, "tasks.json")
+    tasks_to_json(tasks, filename)
     print(f"{tasks[position]['title']} completed!")
 
 # A function to delete a task
@@ -115,7 +116,7 @@ def delete_task():
     if position is None:
         return
     removed = tasks.pop(position)
-    tasks_to_json(tasks, "tasks.json")
+    tasks_to_json(tasks, filename)
     print(f"{removed['title']} deleted!")
 
 # A function to edit a task
@@ -135,7 +136,7 @@ def edit_task():
     deadline= input("Deadline: ").strip()
     if deadline != "":
             task['deadline'] = deadline
-    tasks_to_json(tasks, "tasks.json")
+    tasks_to_json(tasks, filename)
     print(f"✔ Task {position + 1} updated")
 
 # To display based on condition
@@ -159,37 +160,41 @@ def filter_task():
         return
     print_table(matches)
 
-# Taking user input on what to do
-while True:
-    print("\n=== Student Task Manager ===")
-    print("1. Add task")
-    print("2. View tasks")
-    print("3. Mark complete")
-    print("4. Edit task")
-    print("5. Delete task")
-    print("6. Filter tasks")
-    print("7. Exit")
-    choose = input("Choose (1-7): ")
-    if choose == "1":
-        add_tasks()
+def main():
+    # Taking user input on what to do
+    while True:
+        print("\n=== Student Task Manager ===")
+        print("1. Add task")
+        print("2. View tasks")
+        print("3. Mark complete")
+        print("4. Edit task")
+        print("5. Delete task")
+        print("6. Filter tasks")
+        print("7. Exit")
+        choose = input("Choose (1-7): ")
+        if choose == "1":
+            add_tasks()
 
-    elif choose == "2":
-        view_tasks()
+        elif choose == "2":
+            view_tasks()
 
-    elif choose == "3":
-        complete_task()
+        elif choose == "3":
+            complete_task()
 
-    elif choose == "4":
-        edit_task()
+        elif choose == "4":
+            edit_task()
 
-    elif choose == "5":
-        delete_task()
+        elif choose == "5":
+            delete_task()
 
-    elif choose == "6":
-        filter_task()
+        elif choose == "6":
+            filter_task()
 
-    elif choose == "7":
-        break
+        elif choose == "7":
+            break
 
-    else:
-        print("✘ Invalid choice. Please choose 1 to 7")
+        else:
+            print("✘ Invalid choice. Please choose 1 to 7")
+
+if __name__ == "__main__":
+    main()
