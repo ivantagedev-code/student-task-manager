@@ -65,12 +65,11 @@ def print_table(task_list):
             mark, 
             task['title'], 
             task['description'], 
-            task['deadline'], 
-            task['status']
+            task['deadline']
         ])
         
     # Print the entire table at once
-    headers = ["No.", "Done", "Title", "Description", "Deadline", "Status"]
+    headers = ["No.", "Done", "Title", "Description", "Deadline"]
     print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
 
 # A function to view the tasks
