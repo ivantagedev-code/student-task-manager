@@ -83,20 +83,27 @@ def print_table(task_list):
         due = datetime.strptime(task['deadline'], "%d-%m-%Y").date()
         mark = "[ ✔ ]" if task['status'] == "completed" else "[ X ]"
 
-        if due < today and task['status'] != "completed":
-            deadline_text = task['deadline'] + " ⚠ OVERDUE"
+        days_left = (due - today).days
+
+        if task['status'] == "completed":
+            status_text = "Done"
+        elif days_left < 0:
+            status_text = f"⚠ OVERDUE by {-days_left} day(s)"
+        elif days_left == 0:
+            status_text = "Due today"
         else:
-            deadline_text = task['deadline']
+            status_text = f"{days_left} day(s) left"
 
         table_data.append([
             number,
             mark,
             task['title'],
             task['description'],
-            deadline_text
+            task['deadline'],
+            status_text
         ])
 
-    headers = ["No.", "Done", "Title", "Description", "Deadline"]
+    headers = ["No.", "Done", "Title", "Description", "Deadline", "Status"]
     print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
 
 # A function to view the tasks
