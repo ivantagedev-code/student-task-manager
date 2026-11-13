@@ -1,5 +1,6 @@
 import json
 from tabulate import tabulate
+from datetime import datetime
 
 filename = "tasks.json"
 # A function to write tasks to a json file
@@ -33,6 +34,24 @@ def load_tasks(filename):
         return []
 tasks = load_tasks(filename)
 
+# To get deadline as a date
+def deadline_date():
+    while True:
+        deadline = input("Deadline (dd-mm-yyyy): ").strip()
+        try:
+            if len(deadline) != 10:
+                raise ValueError
+            # strptime turns the text into a date
+            datetime.strptime(deadline, "%d-%m-%Y")
+            return deadline
+        except ValueError:
+            print("✘ Use dd-mm-yyyy")
+
+# To sort according to the deadline
+def sort(task):
+    due = datetime.strptime(task['deadline'], "%d-%m-%Y")
+    return (task['status'] == "completed", due)
+
 # To get right input
 def correct_input(prompt):
     while True:
@@ -46,29 +65,37 @@ def add_tasks():
     task = {} 
     task['title']= correct_input("Title: ")
     task['description'] = correct_input("Description: ")
-    task['deadline'] = correct_input("Deadline: ")   
+    task['deadline'] = deadline_date()  
     task['status'] = "pending"
     tasks.append(task)
     tasks_to_json(tasks, filename)
     print("✔ Task added successfully!")
 
+# To get today's date for comparison
+today = datetime.today().date()
+
 # Display result as a table
 def print_table(task_list):
     table_data = []
-    
+    today = datetime.today().date()
+
     for number, task in enumerate(task_list, start=1):
+        due = datetime.strptime(task['deadline'], "%d-%m-%Y").date()
         mark = "[ ✔ ]" if task['status'] == "completed" else "[ X ]"
-        
-        # Build a simple list for each row
+
+        if due < today and task['status'] != "completed":
+            deadline_text = task['deadline'] + " ⚠ OVERDUE"
+        else:
+            deadline_text = task['deadline']
+
         table_data.append([
-            number, 
-            mark, 
-            task['title'], 
-            task['description'], 
-            task['deadline']
+            number,
+            mark,
+            task['title'],
+            task['description'],
+            deadline_text
         ])
-        
-    # Print the entire table at once
+
     headers = ["No.", "Done", "Title", "Description", "Deadline"]
     print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
 
@@ -77,6 +104,9 @@ def view_tasks():
     if len(tasks) == 0:
             print("ℹ No tasks yet. Choose 1 to add one.")
             return
+    # tasks.sort() will call sort on every task and reorders the list.
+    # sorted() is not used as it would make a copy and break the numbering.
+    tasks.sort(key=sort)
     print_table(tasks)
 
 # A function to get the task number    
@@ -132,9 +162,14 @@ def edit_task():
     description = input("Description: ").strip()
     if description != "":
             task['description'] = description
-    deadline= input("Deadline: ").strip()
+    deadline= input("Deadline (dd-mm-yyyy): ").strip()
     if deadline != "":
+        try:
+            datetime.strptime(deadline, "%d-%m-%Y")
             task['deadline'] = deadline
+        except ValueError:
+            print("✘ Invalid date, keeping old deadline")
+
     tasks_to_json(tasks, filename)
     print(f"✔ Task {position + 1} updated")
 
@@ -143,6 +178,7 @@ def filter_task():
     if len(tasks) == 0:
         print("ℹ No tasks yet. Choose 1 to add one.")
         return
+    tasks.sort(key=sort)
     while True:
         status = input("Pending OR Completed: ").strip().lower()
         if status != "pending" and status != "completed":
