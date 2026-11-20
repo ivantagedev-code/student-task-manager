@@ -24,7 +24,7 @@ def tasks_to_json(tasks, filename):
 # A function to load everything in json file to our tasks list
 def load_tasks(filename):
     try:
-        with open(filename, "r") as f:
+        with open(filename, "r", encoding="utf-8") as f:
         # load() --> Read from a file on your computer.
             return(json.load(f))
     except FileNotFoundError:
@@ -70,9 +70,6 @@ def add_tasks():
     tasks.append(task)
     tasks_to_json(tasks, filename)
     print("✔ Task added successfully!")
-
-# To get today's date for comparison
-today = datetime.today().date()
 
 # Display result as a table
 def print_table(task_list):
