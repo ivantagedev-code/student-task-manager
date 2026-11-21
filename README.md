@@ -16,9 +16,6 @@ A command-line task manager for students to track assignments and deadlines.
 
 Student Task Manager helps you keep track of assignments and deadlines from the terminal. It shows how many days are left for each task, warns you when something is overdue, and saves everything to a file so your list is still there the next time you open it.
 
-## Why I built this
-
-<Write 2-3 lines in your own words: the problem you wanted to solve and why a terminal tool helps.>
 
 ## Features
 
@@ -129,9 +126,6 @@ Tasks are saved in `tasks.json` next to the program. Each task looks like this:
 - **Small functions:** each feature is its own function, which keeps the code easy to read and change.
 - **`tabulate` for the table:** it keeps the output clean without writing formatting code by hand.
 
-## AI tools used
-
-<Be honest and specific. For example: "I used ___ to help with ___. I wrote ___ myself and I can explain how every part of the code works." If you used no AI, say that.>
 
 ## Project structure
 
