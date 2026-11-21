@@ -94,7 +94,7 @@ When asked for a task number, press Enter without typing anything to cancel.
 
 ![Filter tasks](screenshots/07-filter.png)
 
-**Tasks are still there after restarting the program**
+**Exiting the program**
 
 ![Restart](screenshots/08-restart.png)
 
