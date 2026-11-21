@@ -1,102 +1,129 @@
-Student Task Manager
+# Student Task Manager
 
-A simple command-line app to keep track of your tasks and deadlines. Tasks are saved in a JSON file, so they are still there the next time you run the program.
+A command-line task manager for students to keep track of assignments and deadlines. It shows how many days are left for each task, warns you when something is overdue, and saves everything to a file so your list is there the next time you open it.
 
-Features
-Add tasks with a title, description and deadline
-View tasks in a table, sorted by deadline (pending tasks first, completed ones at the bottom)
-Mark tasks as complete
-Edit tasks (press Enter to keep a field as it is)
-Delete tasks
-Filter tasks by pending or completed
-Deadline tracking: each pending task shows how many days are left, "Due today", or how many days it is overdue
-Saved automatically to tasks.json after every change
-Input checks: empty fields and wrong date formats are rejected
-Requirements
-Python 3.6 or higher
-tabulate library
+## Why I built this
 
-Install the library with:
+<Write 2-3 lines in your own words: the problem you wanted to solve. For example, how you keep track of lab records and assignment deadlines now, and why a simple terminal tool helps.>
 
-bash
+## Features
+
+- Add tasks with a title, description and deadline
+- View tasks in a table, sorted by deadline (completed tasks go to the bottom)
+- Days-left counter, "Due today" and overdue warnings
+- Mark tasks as complete
+- Edit tasks (press Enter to keep a field unchanged)
+- Delete tasks
+- Filter tasks by pending or completed
+- Automatic saving to `tasks.json`
+- Input validation for empty fields, wrong task numbers and invalid dates
+- Safe start if the save file is missing or damaged
+
+## Requirements
+
+- Python 3.6 or higher
+- [`tabulate`](https://pypi.org/project/tabulate/)
+
+## Setup
+
+```bash
+git clone https://github.com/<your-username>/<your-repo-name>.git
+cd <your-repo-name>
 pip install tabulate
-
-json and datetime come with Python, so there is nothing else to install.
-
-How to Run
-Save the code as task_manager.py (or any name you like).
-Open a terminal in that folder.
-Run:
-bash
 python task_manager.py
-Usage
+```
 
-When you start the program you will see this menu:
+## Commands
 
-=== Student Task Manager ===
-1. Add task
-2. View tasks
-3. Mark complete
-4. Edit task
-5. Delete task
-6. Filter tasks
-7. Exit
-Choose (1-7):
+The program opens a menu. Type a number and press Enter.
 
-Type a number and press Enter.
+| Option | Command | What it does |
+|--------|---------|--------------|
+| 1 | Add task | Asks for title, description and deadline (`dd-mm-yyyy`) |
+| 2 | View tasks | Shows all tasks in a table |
+| 3 | Mark complete | Marks the chosen task as completed |
+| 4 | Edit task | Changes title, description or deadline |
+| 5 | Delete task | Removes the chosen task |
+| 6 | Filter tasks | Shows only `pending` or `completed` tasks |
+| 7 | Exit | Closes the program |
 
-Option	What it does
-1	Asks for a title, description and deadline, then adds the task as pending
-2	Shows all tasks in a table
-3	Shows the tasks, then asks for the number of the task to mark as completed
-4	Shows the tasks, then asks which one to edit. Press Enter on any field to leave it unchanged
-5	Shows the tasks, then asks which one to delete
-6	Shows only pending or completed tasks, whichever you type
-7	Exits the program
+When asked for a task number, press Enter without typing anything to cancel.
 
-When it asks for a task number, you can press Enter without typing anything to cancel.
 
-Deadline format: dd-mm-yyyy, for example 25-12-2026.
+## Screenshots
 
-Example output
-╒═══════╤════════╤═══════════════╤════════════════════╤════════════╤═══════════════╕
-│   No. │ Done   │ Title         │ Description        │ Deadline   │ Status        │
-╞═══════╪════════╪═══════════════╪════════════════════╪════════════╪═══════════════╡
-│     1 │ [ X ]  │ Physics lab   │ Finish the record  │ 25-11-2026 │ 4 day(s) left │
-├───────┼────────┼───────────────┼────────────────────┼────────────┼───────────────┤
-│     2 │ [ ✔ ]  │ Task 3 write  │ Open source task   │ 21-11-2026 │ Done          │
-╘═══════╧════════╧═══════════════╧════════════════════╧════════════╧═══════════════╛
+**Main menu**
 
-The exact table will depend on your tasks and today's date.
+![Menu](screenshots/01-menu.png)
 
-How the Data Is Stored
+**Adding a task**
 
-Tasks are kept in tasks.json in the same folder as the program. The file is created the first time you add a task. Each task looks like this:
+![Add task](screenshots/02-add.png)
 
-json
+**Viewing tasks**
+
+![View tasks](screenshots/03-view.png)
+
+**Marking a task complete**
+
+![Complete task](screenshots/04-complete.png)
+
+**Editing a task**
+
+![Edit task](screenshots/05-edit.png)
+
+**Deleting a task**
+
+![Delete task](screenshots/06-delete.png)
+
+**Filtering tasks**
+
+![Filter tasks](screenshots/07-filter.png)
+
+**Tasks are still there after restarting the program**
+
+![Restart](screenshots/08-restart.png)
+
+**Input validation (error handling)**
+
+![Error handling](screenshots/09-error.png)
+
+## How data is stored
+
+Tasks are saved in `tasks.json` next to the program. Each task looks like this:
+
+```json
 {
  "title": "Physics lab",
  "description": "Finish the record",
  "deadline": "25-11-2026",
  "status": "pending"
 }
+```
 
-status is either pending or completed.
+## Design choices
 
-If tasks.json is missing, the program starts with an empty list. If the file is damaged, it prints a message and also starts empty.
+- **JSON file for storage:** it is human-readable and needs no database or extra setup.
+- **Deadlines stored as `dd-mm-yyyy` text:** they are converted to dates with `datetime` only when needed, for sorting and for the days-left count.
+- **Sorting:** the list is sorted in place (not copied) every time it is shown, so the numbers in the table always match the numbers the program expects.
+- **Input validation in loops:** the program keeps asking until the input is valid, so a typing mistake doesn't crash it.
+- **Small functions:** each feature is its own function, which keeps the code easy to read and change.
+- **`tabulate` for the table:** it keeps the output clean without writing formatting code by hand.
 
-Project Structure
+## AI tools used
+
+<Be honest and specific. For example: "I used ChatGPT/Claude to ___. I wrote ___ myself and I can explain how every part of the code works." If you used no AI, say that.>
+
+## Project structure
+
+```
 .
-├── task_manager.py   # the program
-├── tasks.json        # your saved tasks (created automatically)
+├── task_manager.py
+├── tasks.json        # created automatically
+├── LICENSE
 └── README.md
-Notes
-Tasks are numbered in the order shown in the table. The list is re-sorted every time you view it, so check the number before you complete, edit or delete a task.
-Editing a task does not change its status. Use option 3 to mark it as completed.
-Deleting a task cannot be undone.
-Built With
-Python
-json for saving and loading data
-datetime for handling deadlines
-tabulate for the table display
+```
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
