@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="assets/icon.svg" alt="Student Task Manager icon" width="90">
-
 # Student Task Manager
 
 A command-line task manager for students to track assignments and deadlines.
