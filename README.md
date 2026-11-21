@@ -134,4 +134,4 @@ Tasks are saved in `tasks.json` next to the program. Each task looks like this:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
