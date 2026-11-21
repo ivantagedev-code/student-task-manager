@@ -1,37 +1,52 @@
+<div align="center">
+
+<img src="assets/icon.svg" alt="Student Task Manager icon" width="90">
+
 # Student Task Manager
 
-A command-line task manager for students to keep track of assignments and deadlines. It shows how many days are left for each task, warns you when something is overdue, and saves everything to a file so your list is there the next time you open it.
+A command-line task manager for students to track assignments and deadlines.
+
+![Python](https://img.shields.io/badge/Python-3.6%2B-3776AB?logo=python&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Command%20Line-lightgrey)
+
+</div>
+
+---
+
+## About
+
+Student Task Manager helps you keep track of assignments and deadlines from the terminal. It shows how many days are left for each task, warns you when something is overdue, and saves everything to a file so your list is still there the next time you open it.
 
 ## Why I built this
 
-<Write 2-3 lines in your own words: the problem you wanted to solve. For example, how you keep track of lab records and assignment deadlines now, and why a simple terminal tool helps.>
+<Write 2-3 lines in your own words: the problem you wanted to solve and why a terminal tool helps.>
 
 ## Features
 
-- Add tasks with a title, description and deadline
-- View tasks in a table, sorted by deadline (completed tasks go to the bottom)
-- Days-left counter, "Due today" and overdue warnings
-- Mark tasks as complete
-- Edit tasks (press Enter to keep a field unchanged)
-- Delete tasks
-- Filter tasks by pending or completed
-- Automatic saving to `tasks.json`
-- Input validation for empty fields, wrong task numbers and invalid dates
-- Safe start if the save file is missing or damaged
-
-## Requirements
-
-- Python 3.6 or higher
-- [`tabulate`](https://pypi.org/project/tabulate/)
+- ➕ Add tasks with a title, description and deadline
+- 📋 View tasks in a table, sorted by deadline (completed tasks go to the bottom)
+- ⏳ Days-left counter, "Due today" and overdue warnings
+- ✅ Mark tasks as complete
+- ✏️ Edit tasks (press Enter to keep a field unchanged)
+- 🗑️ Delete tasks
+- 🔍 Filter tasks by pending or completed
+- 💾 Automatic saving to `tasks.json`
+- 🛡️ Input validation for empty fields, wrong task numbers and invalid dates
+- 🔄 Safe start if the save file is missing or damaged
 
 ## Setup
 
+**Requirements:** Python 3.6 or higher
+
 ```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
-pip install tabulate
+git clone https://github.com/ivantagedev-code/student-task-manager.git
+cd student-task-manager
+pip install -r requirements.txt
 python task_manager.py
 ```
+
+`requirements.txt` installs [`tabulate`](https://pypi.org/project/tabulate/). The `json` and `datetime` modules come with Python.
 
 ## Commands
 
@@ -49,7 +64,6 @@ The program opens a menu. Type a number and press Enter.
 
 When asked for a task number, press Enter without typing anything to cancel.
 
-
 ## Screenshots
 
 **Main menu**
@@ -63,6 +77,11 @@ When asked for a task number, press Enter without typing anything to cancel.
 **Viewing tasks**
 
 ![View tasks](screenshots/03-view.png)
+
+<details>
+<summary><b>Click to view more screenshots</b></summary>
+
+<br>
 
 **Marking a task complete**
 
@@ -88,6 +107,8 @@ When asked for a task number, press Enter without typing anything to cancel.
 
 ![Error handling](screenshots/09-error.png)
 
+</details>
+
 ## How data is stored
 
 Tasks are saved in `tasks.json` next to the program. Each task looks like this:
@@ -112,13 +133,17 @@ Tasks are saved in `tasks.json` next to the program. Each task looks like this:
 
 ## AI tools used
 
-<Be honest and specific. For example: "I used ChatGPT/Claude to ___. I wrote ___ myself and I can explain how every part of the code works." If you used no AI, say that.>
+<Be honest and specific. For example: "I used ___ to help with ___. I wrote ___ myself and I can explain how every part of the code works." If you used no AI, say that.>
 
 ## Project structure
 
 ```
 .
+├── assets/
+│   └── icon.svg
+├── screenshots/
 ├── task_manager.py
+├── requirements.txt
 ├── tasks.json        # created automatically
 ├── LICENSE
 └── README.md
