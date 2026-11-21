@@ -130,6 +130,8 @@ Tasks are saved in `tasks.json` next to the program. Each task looks like this:
 ├── task_manager.py
 └── tasks.json        # created automatically
 
+```
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
