@@ -1,52 +1,38 @@
-# 📝 Student Task Manager
+Student Task Manager
 
-![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Type](https://img.shields.io/badge/App-CLI-lightgrey)
+A simple command-line app to keep track of your tasks and deadlines. Tasks are saved in a JSON file, so they are still there the next time you run the program.
 
-> A command-line task manager in Python. Add, edit, delete and filter tasks, and they're saved for next time.
+Features
+Add tasks with a title, description and deadline
+View tasks in a table, sorted by deadline (pending tasks first, completed ones at the bottom)
+Mark tasks as complete
+Edit tasks (press Enter to keep a field as it is)
+Delete tasks
+Filter tasks by pending or completed
+Deadline tracking: each pending task shows how many days are left, "Due today", or how many days it is overdue
+Saved automatically to tasks.json after every change
+Input checks: empty fields and wrong date formats are rejected
+Requirements
+Python 3.6 or higher
+tabulate library
 
----
+Install the library with:
 
-## Features
+bash
+pip install tabulate
 
-- **Add** a task with a title, description and deadline
-- **View** all tasks in a table with their status
-- **Mark** a task as completed
-- **Edit** a task (press Enter to keep a field unchanged)
-- **Delete** a task
-- **Filter** tasks by pending or completed
-- **Saved storage:** tasks are stored in `tasks.json`
-- Input checks: empty fields, invalid task numbers and a damaged data file are handled without crashing
+json and datetime come with Python, so there is nothing else to install.
 
-## Requirements
-
-- Python 3 (tested on Python 3.14)
-- The `tabulate` library (listed in `requirements.txt`)
-
-## Setup
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/ivantagedev-code/student-task-manager.git
-   cd student-task-manager
-   ```
-2. Install the requirement:
-   ```
-   python -m pip install -r requirements.txt
-   ```
-
-## How to run
-
-```
+How to Run
+Save the code as task_manager.py (or any name you like).
+Open a terminal in that folder.
+Run:
+bash
 python task_manager.py
-```
+Usage
 
-## How to use
+When you start the program you will see this menu:
 
-You will see this menu:
-
-```
 === Student Task Manager ===
 1. Add task
 2. View tasks
@@ -55,70 +41,62 @@ You will see this menu:
 5. Delete task
 6. Filter tasks
 7. Exit
-```
+Choose (1-7):
 
-| Option | What it does |
-|--------|--------------|
-| 1 | Asks for a title, description and deadline, then saves the task as pending |
-| 2 | Shows all tasks in a table |
-| 3 | Shows the tasks, then asks for a task number to mark as completed |
-| 4 | Asks for a task number, then lets you change the title, description or deadline. Press Enter to keep the old value |
-| 5 | Asks for a task number and deletes that task |
-| 6 | Shows only pending or only completed tasks |
-| 7 | Exits the program |
+Type a number and press Enter.
 
-When asked for a task number, press Enter to cancel and go back to the menu.
+Option	What it does
+1	Asks for a title, description and deadline, then adds the task as pending
+2	Shows all tasks in a table
+3	Shows the tasks, then asks for the number of the task to mark as completed
+4	Shows the tasks, then asks which one to edit. Press Enter on any field to leave it unchanged
+5	Shows the tasks, then asks which one to delete
+6	Shows only pending or completed tasks, whichever you type
+7	Exits the program
 
-## 📸 Screenshots
+When it asks for a task number, you can press Enter without typing anything to cancel.
 
-**Menu**
+Deadline format: dd-mm-yyyy, for example 25-12-2026.
 
-![Menu](screenshots/01-menu.png)
+Example output
+╒═══════╤════════╤═══════════════╤════════════════════╤════════════╤═══════════════╕
+│   No. │ Done   │ Title         │ Description        │ Deadline   │ Status        │
+╞═══════╪════════╪═══════════════╪════════════════════╪════════════╪═══════════════╡
+│     1 │ [ X ]  │ Physics lab   │ Finish the record  │ 25-11-2026 │ 4 day(s) left │
+├───────┼────────┼───────────────┼────────────────────┼────────────┼───────────────┤
+│     2 │ [ ✔ ]  │ Task 3 write  │ Open source task   │ 21-11-2026 │ Done          │
+╘═══════╧════════╧═══════════════╧════════════════════╧════════════╧═══════════════╛
 
-**View tasks**
+The exact table will depend on your tasks and today's date.
 
-![View tasks](screenshots/03-view.png)
+How the Data Is Stored
 
-**Filter tasks**
+Tasks are kept in tasks.json in the same folder as the program. The file is created the first time you add a task. Each task looks like this:
 
-![Filter](screenshots/07-filter.png)
+json
+{
+ "title": "Physics lab",
+ "description": "Finish the record",
+ "deadline": "25-11-2026",
+ "status": "pending"
+}
 
-<details>
-<summary>Click to see more screenshots</summary>
+status is either pending or completed.
 
-**Adding a task**
+If tasks.json is missing, the program starts with an empty list. If the file is damaged, it prints a message and also starts empty.
 
-![Add task](screenshots/02-add.png)
-
-**Marking a task complete**
-
-![Complete](screenshots/04-complete.png)
-
-**Editing a task**
-
-![Edit](screenshots/05-edit.png)
-
-**Deleting a task**
-
-![Delete](screenshots/06-delete.png)
-
-**Tasks are still there after restarting**
-
-![Restart](screenshots/08-restart.png)
-
-**Invalid input is handled**
-
-![Invalid input](screenshots/09-error.png)
-
-</details>
-
-## How the data is saved
-
-Tasks are stored as a list of dictionaries in `tasks.json`, in the same folder as the program. The file is created the first time a task is saved. If the file is missing, the program starts with an empty list. If it is damaged, the program shows a message and starts empty.
-
-## Notes
-
-- When you filter, the numbers start from 1 again. They are only for display and do not match the numbers in the full list.
-
-
+Project Structure
+.
+├── task_manager.py   # the program
+├── tasks.json        # your saved tasks (created automatically)
+└── README.md
+Notes
+Tasks are numbered in the order shown in the table. The list is re-sorted every time you view it, so check the number before you complete, edit or delete a task.
+Editing a task does not change its status. Use option 3 to mark it as completed.
+Deleting a task cannot be undone.
+Built With
+Python
+json for saving and loading data
+datetime for handling deadlines
+tabulate for the table display
 
