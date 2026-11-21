@@ -117,15 +117,6 @@ Tasks are saved in `tasks.json` next to the program. Each task looks like this:
 }
 ```
 
-## Design choices
-
-- **JSON file for storage:** it is human-readable and needs no database or extra setup.
-- **Deadlines stored as `dd-mm-yyyy` text:** they are converted to dates with `datetime` only when needed, for sorting and for the days-left count.
-- **Sorting:** the list is sorted in place (not copied) every time it is shown, so the numbers in the table always match the numbers the program expects.
-- **Input validation in loops:** the program keeps asking until the input is valid, so a typing mistake doesn't crash it.
-- **Small functions:** each feature is its own function, which keeps the code easy to read and change.
-- **`tabulate` for the table:** it keeps the output clean without writing formatting code by hand.
-
 
 ## Project structure
 
