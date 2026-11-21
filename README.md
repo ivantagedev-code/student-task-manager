@@ -122,15 +122,13 @@ Tasks are saved in `tasks.json` next to the program. Each task looks like this:
 
 ```
 .
-├── assets/
-│   └── icon.svg
 ├── screenshots/
-├── task_manager.py
-├── requirements.txt
-├── tasks.json        # created automatically
+├── .gitignore
 ├── LICENSE
-└── README.md
-```
+├── README.md
+├── requirements.txt
+├── task_manager.py
+└── tasks.json        # created automatically
 
 ## License
 
