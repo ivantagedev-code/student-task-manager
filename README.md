@@ -125,12 +125,16 @@ Tasks are saved in `tasks.json` next to the program. Each task looks like this:
 ├── screenshots/
 ├── .gitignore
 ├── LICENSE
+├── NOTES.md
 ├── README.md
 ├── requirements.txt
 ├── task_manager.py
 └── tasks.json        # created automatically
 
 ```
+
+See [NOTES.md](NOTES.md) for design choices and AI usage.
+
 
 ## License
 
